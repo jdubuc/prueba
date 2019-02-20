@@ -1,0 +1,63 @@
+
+php artisan make:migration create_compra_table --create compra
+php artisan make:migration create_detalle_compra_table --create detalle_compra
+php artisan make:migration create_categoria_table --create categoria
+
+-Explica la diferencia entre Composición y Herencia, incluyendo ejemplos de cuándo es más apropiado usar una o la otra. 
+
+Herencia es cuando un objeto/clase/modelo se basa o extiende de otro objeto/clase/modelo, y se comparten esas implementaciones y comportamientos.
+un carro tiene distintos tipos o mpdelos, pero en la base todos son carros, en resumen tiene las mismas 
+caracteristicas base de un carro, aunque sean distintos tipos de carros.
+
+Composición es cuando un objeto/clase/modelo, contiene una o mas instancias de otro objeto, en resumen en parte esta
+compuesto por estos mismo, ejemplo un pais, tiene varios estados, esos estados tienen ciudades,
+
+-Describe en detalle cómo Laravel usa el patrón de diseño MVC
+laravel define un modelo con su vista y controlador, los cuales se accesan por una ruta definida, de ahi te lleva al controlador donde se llevan procesos donde terminan redirigiendo a una vista, en resumen 
+ laravel usa las rutas para saber cuál controlador llamar y cuál método. 
+Luego el controlador responde de vuelta con una vista. 
+(Esto quiere decir que las rutas se usan antes que los controladores).
+
+-Utilizando Laravel, 
+se requiere crear las rutas para un sistema que muestra películas de distinto género. 
+Con la base /pelicula/, crea una ruta que dirija a una acción por cada género (entregado como parámetro) en el controlador. Los géneros válidos son Drama, Comedia, Acción y Terror. Cualquier otro género debe devolver error 404.
+ver Route::get('pelicula/{genero}', 'peliculaController@pelicula');
+
+-¿Cuáles son las ventajas y desventajas de usar el patrón de diseño Active Record en la capa de Modelo?
+
+*ventajas:
+-Se trabajan las entidades del Modelo más Naturalmente como objetos.
+-Las acciones como Insertar, Consultar, Actualizar, Borrar, etc. de una entidad del Modelo están encapsuladas así que se reduce el código y se hace más fácil de mantener.
+Código más fácil de Entender y Mantener
+Reducción del uso del SQL en un 80%, con lo que se logra un alto porcentaje de independencia del motor de base de datos.
+Menos “detalles” más practicidad y utilidad
+ActiveRecord protege en un gran porcentaje de ataques de SQL inyection que puedan llegar a sufrir tus aplicaciónes escapando caracteres que puedan facilitar estos ataques.
+*desventajas:
+-Si se desea cambiar algo dentro de la base de datoso en su caso cambiarla de sitio se debe de editartodos y cada uno de los objetos en sus métodos deacceso.
+
+
+-Comandos necesarios para crear un controlador en Laravel, 
+como correr un seeder en PHP, que diferencia existe en el objeto extraído con el método find o All.
+php artisan make:controller compraController --resource
+php artisan make:controller detalle_compraController --resource
+php artisan make:controller categoriaController --resource
+
+php artisan db:seed
+php artisan db:seed --class=NombreDelSeeder
+Un ejemplo
+
+php artisan db:seed --class=UsersTable
+O Simplemente.
+
+php artisan migrate:refresh --seed
+
+find trae un objeto con un id especifico de un modelo ( ejemplo User::find($id);)
+all trae todos los objetos de un modelo (ejemplo User::all();)
+
+Subir las respuestas de la prueba en un reporsitorio junto con la app y notificar
+
+En qué nos fijaremos
+
+Bonus
+Uso de alguna librería en el frontend. Idealmente Vue Js
+Uso de test (unittest con phpunit)
